@@ -1,0 +1,11 @@
+if [[ $1 = 'create' ]]; then
+        mkdir /pathsources/
+	create1=`export PATH+=:/pathsources/`$3`/:`
+	create2=$4
+
+	
+	touch /pathsources/$create2
+	echo $create1 >> /pathsources/$create2
+
+        'Создан путь запуска /pathsources/'+$create2
+fi
