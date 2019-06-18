@@ -1,2 +1,2 @@
-export PATH=$PATH:/magic/progs/all/test/bin
+export PATH=$PATH:/magic/progs/$USER/test/
 

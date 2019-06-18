@@ -1,10 +1,17 @@
 echo "Загрузка приложения "$1
 echo "___________________________________"
-W_GET='https://raw.githubusercontent.com/mosengine/MagicOS/master/apps/test/'$1
 
+cd /tmp; mkdir magic; cd magic; mkdir apps; cd apps; mkdir $1; cd $1; 
+mkdir confs;
+
+W_GET='https://raw.githubusercontent.com/mosengine/MagicOS/master/apps/'$1'/'$1
+wget $W_GET; cd confs
+W_GET='https://raw.githubusercontent.com/mosengine/MagicOS/master/apps/test/confs/'$1
 wget $W_GET
-mkdir /magic/progs/$USER/$1
-mv $1 /magic/progs/$USER/$1/$1
 
-EXPT="export PATH+=:/magic/progs/:"
-source $EXPT
+
+cp -r /tmp/magic/apps/$1/ /magic/progs/$USER/$1/
+rm -r /tmp/magic
+
+echo "source /magic/progs/$USER/"$1"/confs/"$1 >> /magic/magic
+
