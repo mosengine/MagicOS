@@ -1,0 +1,23 @@
+rm $HOME/Programms
+rm -r /magic
+
+mkdir /magic
+mkdir /magic/confs
+cp -r ./progs /magic/progs/
+cp ./confs /magic/confs/test
+
+mkdir /magic/progs/$USER
+mkdir /magic/bin
+
+cp ./magic /magic/magic
+
+echo "source /magic/magic" >> $HOME/.bashrc
+
+echo "source /magic/confs/test" >> /magic/magic
+
+
+echo \echo \"It\'s a Magic\" >> /magic/bin/magictest
+
+ln -r -s /magic/progs/$USER $HOME/Programms
+
+
