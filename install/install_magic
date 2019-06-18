@@ -7,7 +7,7 @@ cp -r ./progs /magic/progs/
 cp ./confs /magic/confs/test
 
 mkdir /magic/progs/$USER
-mkdir /magic/bin
+cp -r ./bin /magic/bin
 
 cp ./magic /magic/magic
 
