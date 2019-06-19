@@ -1,18 +1,53 @@
+cp /magic/other/editsysfiles/root_bashrc_not_magiced /root/.bashrc
+cut -d: -f1 /etc/passwd | while IFS= read -r user
+do
+    if [ -d /home/$user ]; then
+	cp "/magic/other/editsysfiles/home_"$user"_bashrc_not_magiced" /home/$user/.bashrc  
+	chown $user /home/$user/.bashrc 
+    fi
+done
 rm $HOME/Programms
 rm -r /magic
 
+
+#################################################################################################
+
+
 mkdir /magic
 mkdir /magic/confs
-cp -r ./progs /magic/progs/
-cp ./confs /magic/confs/test
+mkdir /magic/progs/
+mkdir /magic/paths
+mkdir /magic/other/
+mkdir /magic/other/editsysfiles
 
-mkdir /magic/progs/$USER
 cp -r ./bin /magic/bin
+cp -r ./params /magic/params
 
 cp ./magic /magic/magic
 
-echo "source /magic/magic" >> $HOME/.bashrc
+cp /magic/magic	/magic/paths/root
+cp /root/.bashrc /magic/other/editsysfiles/root_bashrc_not_magiced
 
-ln -r -s /magic/progs/$USER $HOME/Programms
+cp dotmagic /root/.magic
+echo "source .magic" >> /root/.bashrc
 
+mkdir /magic/progs/root
+ln -r -s /magic/progs/root/ /root/Programms
+
+cut -d: -f1 /etc/passwd | while IFS= read -r user
+do
+    if [ -d /home/$user ]; then
+        cp /magic/magic	/magic/paths/$user
+	cp /home/$user/.bashrc "/magic/other/editsysfiles/home_"$user"_bashrc_not_magiced"
+	cp dotmagic /home/$user/.magic
+	echo "source .magic" >> /home/$user/.bashrc 
+
+        mkdir /magic/progs/$user
+        ln -r -s /magic/progs/$user/ /home/$user/Programms
+	chown $user /magic/paths/$user
+	chown $user /magic/progs/$user
+    fi
+done
+
+rm /magic/magic
 

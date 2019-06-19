@@ -1,0 +1,10 @@
+source /magic/params/GLOBAL
+
+if [[ $MAGIC_OS = "ON" ]] ; then
+	echo '#####################'
+	echo '# MAGIC_OS enable'
+	echo '#####################'	
+	echo ' '
+source /magic/paths/$USER
+fi
+
