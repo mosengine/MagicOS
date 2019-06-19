@@ -1,13 +1,35 @@
-echo "Загрузка приложения "$1
-echo "___________________________________"
+	echo '#####################'
+	echo '# Загрузка приложения '$1
+	echo '#####################'	
+	echo ' '
+
 
 cd /tmp; mkdir magic; cd magic; mkdir apps; cd apps; mkdir $1; cd $1;
 
-wget 'https://raw.githubusercontent.com/mosengine/MagicOS/master/apps/'$1'/download'
+cp /home/nelsson302/Projects/MagicOS/install/bin/tree ./tree
 
-cat /tmp/magic/apps/$1/download | while IFS= read -r dld
+wget 'https://raw.githubusercontent.com/mosengine/MagicOS/master/apps/'$1'/tree'
+
+cp /magic/other/magicfiles/readtree ./READ
+
+cat ./tree  |  while IFS= read -r line  
 do
-	echo $dld
 
+	echo "#					 " >> READ
+	echo $line |  awk '{ print "NAME="$1}'     >> READ
+	echo $line |  awk '{ print "LINK="$2}'     >> READ
+	echo "#					 " >> READ
+	echo "###################################" >> READ
+		
+	source ./READ
+
+	DIRNAME=`dirname $NAME`	
+	BASENAME=`basename $NAME`	
+	wget $LINK
+	mkdir -p ./$DIRNAME
+	mv $BASENAME ./$DIRNAME/$BASENAME
+	
 done
+
+mv /tmp/magic/apps/$1 /magic/progs/$USER/$1
 

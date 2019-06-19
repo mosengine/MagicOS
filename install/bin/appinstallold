@@ -1,0 +1,16 @@
+	echo '#####################'
+	echo '# Загрузка приложения '$1
+	echo '#####################'	
+	echo ' '
+
+cd /tmp; mkdir magic; cd magic; mkdir apps; cd apps; mkdir $1; cd $1;
+
+wget 'https://raw.githubusercontent.com/mosengine/MagicOS/master/apps/'$1'/download'
+
+chk=1
+cat /tmp/magic/apps/$1/download | while IFS= read -r dld
+do
+	wget $dld
+	chk=$chk+1;
+done
+

@@ -14,11 +14,13 @@ rm -r /magic
 
 
 mkdir /magic
-mkdir /magic/confs
+mkdir /magic/confs/
 mkdir /magic/progs/
-mkdir /magic/paths
+mkdir /magic/paths/
 mkdir /magic/other/
 mkdir /magic/other/editsysfiles
+
+cp -r ./magicfiles /magic/other/magicfiles
 
 cp -r ./bin /magic/bin
 cp -r ./params /magic/params
