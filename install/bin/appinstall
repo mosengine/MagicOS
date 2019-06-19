@@ -32,4 +32,4 @@ do
 done
 
 mv /tmp/magic/apps/$1 /magic/progs/$USER/$1
-
+echo 'source /magic/progs/$USER/$1/space' >> /magic/paths/$USER

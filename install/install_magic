@@ -44,7 +44,7 @@ do
 	cp dotmagic /home/$user/.magic
 	echo "source .magic" >> /home/$user/.bashrc 
 
-        mkdir /magic/progs/$user
+        mkdir /magic/progs/$user/
         ln -r -s /magic/progs/$user/ /home/$user/Programms
 	chown $user /magic/paths/$user
 	chown $user /magic/progs/$user
