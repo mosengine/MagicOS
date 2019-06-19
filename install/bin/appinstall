@@ -4,22 +4,17 @@
 	echo ' '
 
 
-cd /tmp; mkdir magic; cd magic; mkdir apps; cd apps; mkdir $1; cd $1;
+cd /magic; cd tmp; mkdir works; cd works; mkdir apps; cd apps; mkdir $1; cd $1;
 
 cp /home/nelsson302/Projects/MagicOS/install/bin/tree ./tree
 
 wget 'https://raw.githubusercontent.com/mosengine/MagicOS/master/apps/'$1'/tree'
 
-cp /magic/other/magicfiles/readtree ./READ
-
 cat ./tree  |  while IFS= read -r line  
 do
 
-	echo "#					 " >> READ
 	echo $line |  awk '{ print "NAME="$1}'     >> READ
 	echo $line |  awk '{ print "LINK="$2}'     >> READ
-	echo "#					 " >> READ
-	echo "###################################" >> READ
 		
 	source ./READ
 
@@ -31,5 +26,5 @@ do
 	
 done
 
-mv /tmp/magic/apps/$1 /magic/progs/$USER/$1
+mv /magic/tmp/works/apps/$1 /magic/progs/$USER/$1
 echo 'source /magic/progs/$USER/$1/space' >> /magic/paths/$USER
