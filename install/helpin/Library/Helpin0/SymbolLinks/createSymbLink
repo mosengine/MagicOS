@@ -1,0 +1,9 @@
+function createSymbLink()
+{
+	echo $createSymbLinkIsSet
+}
+
+function createSymbLinkToDir()
+{
+	echo $createSymbLinkIsSet
+}

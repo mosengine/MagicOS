@@ -6,7 +6,6 @@ do
 	chown $user /home/$user/.bashrc 
     fi
 done
-rm $HOME/Programms
 rm -r /magic
 
 
@@ -20,10 +19,13 @@ mkdir /magic/paths/
 mkdir /magic/other/
 mkdir /magic/other/editsysfiles
 
+cp -r ./links /magic/links
 cp -r ./tmp /magic/tmp
 chmod 777 /magic/tmp
 
+cp -r ./does /magic/does
 cp -r ./bin /magic/bin
+cp -r ./helpin /magic/helpin
 cp -r ./params /magic/params
 
 cp ./magic /magic/magic
@@ -32,10 +34,18 @@ cp /magic/magic	/magic/paths/root
 cp /root/.bashrc /magic/other/editsysfiles/root_bashrc_not_magiced
 
 cp dotmagic /root/.magic
-echo "source .magic" >> /root/.bashrc
+cp dothelpin /root/.helpin
+echo "source ~/.magic" 		   >> /root/.bashrc
+cp -r /magic/params/users/USER_TEMPLATE/ /magic/params/users/root
+chmod -R 755 /magic/params/users/root
+echo "source /magic/params/users/root/U_GLOBAL" >> /root/.magic
+cp -r /magic/does/users/user_template/ /magic/does/users/root/
+chmod -R 755 /magic/does/users/root/
+echo "source /magic/does/users/root/does_0" >> /root/.magic
+
+cp /magic/helpin/Helpin/Helpinects/standart /magic/helpin/Helpin/Helpinects/root
 
 mkdir /magic/progs/root
-ln -r -s /magic/progs/root/ /root/Programms
 
 cut -d: -f1 /etc/passwd | while IFS= read -r user
 do
@@ -43,14 +53,33 @@ do
         cp /magic/magic	/magic/paths/$user
 	cp /home/$user/.bashrc "/magic/other/editsysfiles/home_"$user"_bashrc_not_magiced"
 	cp dotmagic /home/$user/.magic
-	echo "source .magic" >> /home/$user/.bashrc 
+	cp dothelpin /home/$user/.helpin
+	echo "source ~/.magic" >> /home/$user/.bashrc
+		
+	cp -r /magic/params/users/USER_TEMPLATE/ /magic/params/users/$user
+	chown -R $user /magic/params/users/$user/
+	chmod -R 755 /magic/params/users/$user/
+	echo "source /magic/params/users/"$user"/U_GLOBAL" >> /home/$user/.magic
+	source /magic/params/users/$user/U_GLOBAL
+	cp -r /magic/does/users/user_template/ /magic/does/users/$user/
+	chown -R $user /magic/does/users/$user/
+	chmod -R 755 /magic/does/users/$user/
+	echo "source /magic/does/users/"$user"/does_0" >> /home/$user/.magic
+	
+	cp /magic/helpin/Helpin/Helpinects/standart /magic/helpin/Helpin/Helpinects/$user
+	chown $user /magic/helpin/Helpin/Helpinects/$user	
 
+	mkdir /magic/links/$user/
         mkdir /magic/progs/$user/
-        ln -r -s /magic/progs/$user/ /home/$user/Programms
 	chown $user /magic/paths/$user
 	chown $user /magic/progs/$user
     fi
 done
-
+chmod -R 755 /magic/
+chmod 777 /magic/tmp
 rm /magic/magic
+
+#APPINSTALL
+wget https://raw.githubusercontent.com/mosengine/MagicOS/master/apps/LIST
+mv ./LIST /magic/params/COMPLETE/APPS/APPINSTALL/LIST
 

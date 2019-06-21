@@ -7,4 +7,11 @@ export PATH=$PATH:/magic/bin
 # 
 ###################################################
 #
+# HELPIN
+#
+export PATH=$PATH:/magic/helpin/Helpin
+#
+# 
+###################################################
+#
 # Connect Spaces

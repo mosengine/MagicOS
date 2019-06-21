@@ -1,0 +1,9 @@
+if [[ $HELPINS = "ON" ]] ; then
+
+	export PATH=$PATH:/magic/helpin/Helpin
+
+fi
+###################################################
+#
+# Helpinects Path
+source '/magic/helpin/Helpin/Helpinects/'$USER

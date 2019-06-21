@@ -1,0 +1,14 @@
+##
+#MAGIC_OS
+##
+ENABLE='enable'
+UPDATED='update'
+
+##
+#Helpins
+##
+createSymbLinkIsSet='Ссылка существует'
+
+
+PROGRAMMS='Программы'
+SCRIPTS='Скрипты'

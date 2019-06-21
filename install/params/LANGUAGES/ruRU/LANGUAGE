@@ -1,0 +1,16 @@
+##
+#MAGIC_OS
+##
+ENABLE='включена'
+UPDATED='обновлена'
+INSTALLED='установлено'
+INSTALLEDAPP='установленно приложение'
+
+##
+#Helpins
+##
+createSymbLinkIsSet='Ссылка существует'
+
+
+PROGRAMMS='Программы'
+SCRIPTS='Скрипты'

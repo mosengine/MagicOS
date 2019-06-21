@@ -1,0 +1,1 @@
+echo "/magic/helpin/Library/"$1"/"$2 >> /magic/helpin/Helpin/Helpinects/$USER

@@ -1,10 +1,15 @@
 source /magic/params/GLOBAL
+source /magic/params/users/$USER/U_GLOBAL
+source /magic/params/LANGUAGES/$MAGIC_GLOBAL_LANGUAGE/LANGUAGE
+source ~/.helpin
+
+source /magic/params/COMPLETE/APPS/COMPLETE
 
 if [[ $MAGIC_OS = "ON" ]] ; then
+	source /magic/params/users/$USER/GLOBAL/VARS/MAGIC_OS_STATUS/MAGIC_OS_STATUS
 	echo '#####################'
-	echo '# MAGIC_OS enable'
+	echo '# MAGIC_OS '$MAGIC_OS_STATUS
 	echo '#####################'	
-	echo ' '
-source /magic/paths/$USER
+	source /magic/paths/$USER
 fi
 

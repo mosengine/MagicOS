@@ -6,8 +6,6 @@
 
 cd /magic; cd tmp; mkdir works; cd works; mkdir apps; cd apps; mkdir $1; cd $1;
 
-cp /home/nelsson302/Projects/MagicOS/install/bin/tree ./tree
-
 wget 'https://raw.githubusercontent.com/mosengine/MagicOS/master/apps/'$1'/tree'
 
 cat ./tree  |  while IFS= read -r line  
@@ -21,10 +19,19 @@ do
 	DIRNAME=`dirname $NAME`	
 	BASENAME=`basename $NAME`	
 	wget $LINK
+	chmod 755 $BASENAME
 	mkdir -p ./$DIRNAME
 	mv $BASENAME ./$DIRNAME/$BASENAME
 	
 done
 
+rm READ; rm tree;
+
 mv /magic/tmp/works/apps/$1 /magic/progs/$USER/$1
-echo 'source /magic/progs/$USER/$1/space' >> /magic/paths/$USER
+echo 'source /magic/progs/'$USER'/'$1'/space' >> /magic/paths/$USER
+
+rm /magic/params/users/$USER/GLOBAL/VARS/MAGIC_OS_STATUS/MAGIC_OS_STATUS
+echo 'MAGIC_OS_STATUS=${INSTALLED}\ '$1 >> /magic/params/users/$USER/GLOBAL/VARS/MAGIC_OS_STATUS/MAGIC_OS_STATUS
+
+cd $HOME
+bash
